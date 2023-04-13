@@ -1,0 +1,146 @@
+#UTP STUKTUR DATA DAN ALGORITMA
+
+#Kelompok 16 Kelas B
+#Bernadetha Belva Arjanti (2257051021)
+#Farid Sidhiq Saputra (2257051028)
+#Muhammad Arif Rizki Pohan (2217050190)
+
+
+#IMPLEMENTASI RUMUS MATEMATIKA
+
+import math
+
+
+class BangunDatar:
+    #Rumus luas persegi
+    def luas_persegi(self, sisi):
+        return sisi ** 2
+    
+    #Rumus luas persegi panjang
+    def luas_persegi_panjang(self, panjang, lebar):
+        return panjang * lebar
+    
+    #Rumus luas lingkaran
+    def luas_lingkaran(self, jari_jari):
+        return math.pi * jari_jari ** 2
+    
+    #Rumus luas segitiga
+    def luas_segitiga(self, alas, tinggi):
+        return 0.5 * alas * tinggi
+    
+    #Memanggil
+    def hitung_luas(self):
+        pilihan = input("Masukkan pilihan bangun datar (persegi, persegi panjang, lingkaran, segitiga): ")
+        arr_pilihan = ["persegi", "persegi panjang", "lingkaran", "segitiga"]
+        if pilihan in arr_pilihan:
+            if pilihan == "persegi":
+                sisi = int(input("Masukkan panjang sisi: "))
+                print("Luas persegi adalah: ", self.luas_persegi(sisi))
+            elif pilihan == "persegi panjang":
+                panjang = int(input("Masukkan panjang: "))
+                lebar = int(input("Masukkan lebar: "))
+                print("Luas persegi panjang adalah: ", self.luas_persegi_panjang(panjang, lebar))
+            elif pilihan == "lingkaran":
+                jari_jari = int(input("Masukkan jari-jari: "))
+                print("Luas lingkaran adalah: ", self.luas_lingkaran(jari_jari))
+            elif pilihan == "segitiga":
+                alas = int(input("Masukkan alas: "))
+                tinggi = int(input("Masukkan tinggi: "))
+                print("Luas segitiga adalah: ", self.luas_segitiga(alas, tinggi))
+        else:
+            print("Pilihan tidak tersedia")
+
+
+
+class BangunRuang:
+    #Rmus volume kubus
+    def volume_kubus(self, sisi):
+        return sisi ** 3
+    
+    #Rumus volume balok
+    def volume_balok(self, panjang, lebar, tinggi):
+        return panjang * lebar * tinggi
+    
+    #Rumus volume tabung
+    def volume_tabung(self, jari_jari, tinggi):
+        return math.pi * jari_jari ** 2 * tinggi
+    
+    #Rumus volume lingkaraan
+    def volume_lingkaran(self, jari_jari, tinggi):
+        return 1/3 * math.pi * jari_jari ** 2 * tinggi
+    
+    #Rumus volume segitiga
+    def volume_segitiga(self, alas, tinggi, tinggi_prisma):
+        return 1/2 * alas * tinggi * tinggi_prisma
+    
+    #Memanggil
+    def hitung_volume(self):
+        pilihan = input("Masukkan pilihan bangun ruang (kubus, balok, tabung, lingkaran, prisma): ")
+        arr_pilihan = ["kubus", "balok", "tabung", "lingkaran", "prisma"]
+        if pilihan in arr_pilihan:
+            if pilihan == "kubus":
+                sisi = int(input("Masukkan panjang sisi: "))
+                print("Volume kubus adalah: ", self.volume_kubus(sisi))
+            elif pilihan == "balok":
+                panjang = int(input("Masukkan panjang: "))
+                lebar = int(input("Masukkan lebar: "))
+                tinggi = int(input("Masukkan tinggi: "))
+                print("Volume balok adalah: ", self.volume_balok(panjang, lebar, tinggi))
+            elif pilihan == "tabung":
+                jari_jari = float(input("Masukkan jari-jari: "))
+                tinggi = float(input("Masukkan tinggi: "))
+                print("Volume tabung adalah: ", self.volume_tabung(jari_jari, tinggi))
+            elif pilihan == "lingkaran":
+                jari_jari = float(input("Masukkan jari-jari: "))
+                tinggi = float(input("Masukkan tinggi: "))
+                print("Volume lingkaran adalah: ", self.volume_lingkaran(jari_jari, tinggi))
+            elif pilihan == "prisma":
+                alas = float(input("Masukkan alas: "))
+                tinggi = float(input("Masukkan tinggi: "))
+                tinggi_prisma = int(input("Masukkan tinggi prisma: "))
+                print("Volume segitiga adalah: ", self.volume_segitiga(alas, tinggi, tinggi_prisma))
+        else:
+            print("Pilihan tidak tersedia")
+
+#Penggunaan sequence pada fibonacci
+class Sequence:
+    
+    #Rumus fibonacci rekursif
+    def fibonacci_rekursif(self, n):
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return self.fibonacci_rekursif(n-1) + self.fibonacci_rekursif(n-2)
+    
+    #Memanggil
+    def hitung_sequence(self):
+       n = int(input("Masukkan nilai n: "))
+       print("Nilai ke-", n, "dari sequence fibonacci adalah: ", self.fibonacci_rekursif(n))
+       
+
+#Tampilan Menu
+
+while True:
+    print("  ========== MENU PILIHAN RUMUS ==========  ")
+    print("|| 1. Hitung luas bangun datar            ||")
+    print("|| 2. Hitung volume bangun ruang          ||")
+    print("|| 3. Mencari bilangan ke-n dari fibonacci||")
+    print("|| 4. Keluar                              ||")
+    print("  ========================================  ")
+
+    pilihan = int(input("Masukkan pilihan: "))
+    if pilihan == 1:
+        bangun_datar = BangunDatar()
+        bangun_datar.hitung_luas()
+    elif pilihan == 2:
+        bangun_ruang = BangunRuang()
+        bangun_ruang.hitung_volume()
+    elif pilihan == 3:
+        sequence = Sequence()
+        sequence.hitung_sequence()
+    elif pilihan == 4:
+        break
+    else:
+        print("Pilihan tidak tersedia")
